@@ -1,0 +1,254 @@
+{
+  "schemaVersion": "4.0",
+  "mode": "explore",
+  "product": {
+    "name": "TRACE",
+    "type": "marketing",
+    "audience": "需要追踪 AI 研究依据的小团队",
+    "primaryJob": "快速查看研究结论如何连接到具体来源",
+    "platforms": [
+      "web"
+    ]
+  },
+  "outputContract": {
+    "deliverable": "自包含、可交互的首页 HTML 示例",
+    "stack": "vanilla HTML/CSS/JavaScript",
+    "immutableRequirements": [
+      "全屏第一眼可见主价值",
+      "不虚构用户数、客户与转化指标",
+      "响应式且可用键盘操作"
+    ]
+  },
+  "creativeDirection": {
+    "thesis": "用可溯源的证据链图形取代泛泛的 AI 星球/神秘渐变",
+    "visualSignature": "深色石墨与带暖色标记的可溯源研究路径，像放大的工作台切片",
+    "rationale": "目标买家关心 AI 结论是否可信，产品演示比空口承诺更有效",
+    "rejectedPattern": "三张同尺寸 AI 卡片加抽象光晕背景",
+    "alternatives": [
+      {
+        "name": "Evidence-first workspace",
+        "layout": "左文字右证据链演示",
+        "tradeoff": "视觉更技术化但容易理解"
+      },
+      {
+        "name": "Editorial storytelling",
+        "layout": "大标题+横向研究出处时间线",
+        "tradeoff": "更品牌化但演示交互较弱"
+      },
+      {
+        "name": "Minimal command interface",
+        "layout": "中央可操作命令行与结果片段",
+        "tradeoff": "更易用但首屏视觉记忆点较弱"
+      }
+    ]
+  },
+  "firstImpression": {
+    "visitorMode": "persuade",
+    "attentionGoal": "让研究团队注意到“每条 AI 结论都可找到出处”的差异",
+    "fiveSecondRead": {
+      "what": "面向研究团队的可溯源 AI 工作台",
+      "why": "点击结论就能查看支持它的来源",
+      "next": "试着探索可溯源演示"
+    },
+    "visualAnchor": {
+      "componentId": "source-trail",
+      "kind": "interactive-product-proof",
+      "reason": "左侧结论和右侧文献节点的可见连接就是产品价值"
+    },
+    "attentionBudget": {
+      "dominantAnchors": 1,
+      "secondaryAnchors": 2
+    },
+    "primaryAction": {
+      "componentId": "hero-cta",
+      "label": "探索演示工作台",
+      "destination": "#trail-demo",
+      "outcome": "source-trail-demo-open"
+    },
+    "proof": {
+      "type": "interactive-product-demo",
+      "source": "synthetic trace sample; no real clients or usage claims",
+      "status": "demo",
+      "visibleDemoLabel": true
+    },
+    "aboveFoldByViewport": [
+      {
+        "width": 320,
+        "layout": "竖向标题→主 CTA→紧凑来源节点，可继续滚动",
+        "anchorVisible": true,
+        "actionDiscoverable": true
+      },
+      {
+        "width": 390,
+        "layout": "叙事左到右改为叙事上到下、保留核心节点",
+        "anchorVisible": true,
+        "actionDiscoverable": true
+      },
+      {
+        "width": 768,
+        "layout": "两列主内容但缩小证明面板细节",
+        "anchorVisible": true,
+        "actionDiscoverable": true
+      },
+      {
+        "width": 1440,
+        "layout": "左文案 44% 右可视化 56%",
+        "anchorVisible": true,
+        "actionDiscoverable": true
+      }
+    ],
+    "smallHeightStrategy": "保留正常页面滚动；不固定满屏以免键盘/短屏裁切 CTA"
+  },
+  "typography": {
+    "display": "system-ui, ui-sans-serif",
+    "body": "system-ui, ui-sans-serif",
+    "loading": "font-display:swap (system fallback)",
+    "hierarchy": [
+      {
+        "role": "h1",
+        "size": "clamp(42px,5.2vw,76px)",
+        "lineHeight": "1.03"
+      },
+      {
+        "role": "body",
+        "size": "16px",
+        "lineHeight": "1.6"
+      }
+    ]
+  },
+  "palette": {
+    "background": "#111719",
+    "foreground": "#F1F5EF",
+    "accent": "#E4C18A",
+    "contrastStrategy": "主副文本分层，按钮对比 >=4.5:1；装饰节点永不承载必要文本"
+  },
+  "layout": {
+    "container": "min(1240px,100% - 48px)",
+    "breakpoints": [
+      {
+        "width": 320,
+        "behavior": "单列、缩短非关键说明"
+      },
+      {
+        "width": 390,
+        "behavior": "单列、压缩节点轨迹但不隐藏主结果"
+      },
+      {
+        "width": 768,
+        "behavior": "两列网格重排"
+      },
+      {
+        "width": 1440,
+        "behavior": "双栏叙事"
+      }
+    ],
+    "primaryVisibleInFirstViewport": true
+  },
+  "layers": [
+    {
+      "id": "canvas",
+      "z": 0,
+      "role": "solid background"
+    },
+    {
+      "id": "trace",
+      "z": 1,
+      "role": "interactive demo"
+    },
+    {
+      "id": "floating-label",
+      "z": 2,
+      "role": "status overlay"
+    }
+  ],
+  "assets": [],
+  "components": [
+    {
+      "id": "hero-title",
+      "role": "explain-benefit",
+      "spec": "左栏 48–76px，最大 8ch/行，在 320px 不超过 48px"
+    },
+    {
+      "id": "hero-cta",
+      "role": "primary-action",
+      "spec": "高度 52px，金色实体 CTA，移动端首屏可见；点击滚动并聚焦证据链"
+    },
+    {
+      "id": "source-trail",
+      "role": "focal-product-demo",
+      "spec": "右栏深色悬浮工作区，三层来源与结论节点连接，1200px 目标宽度 600px，移动端独占一行并保持节点可见"
+    },
+    {
+      "id": "source-node-1",
+      "role": "demo-interaction",
+      "spec": "可聚焦的文献节点；点击切换当前选中来源"
+    },
+    {
+      "id": "demo-caption",
+      "role": "proof-disclaimer",
+      "spec": "界面标注“概念演示 · 模拟来源”"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "hero",
+      "goal": "5 秒内识别研究证据可追踪的产品价值",
+      "layout": "desktop left text + right visible proof; mobile text + CTA + proof",
+      "focalComponentId": "source-trail",
+      "componentIds": [
+        "hero-title",
+        "hero-cta",
+        "source-trail",
+        "source-node-1",
+        "demo-caption"
+      ],
+      "zPlan": [
+        "canvas",
+        "trace",
+        "floating-label"
+      ],
+      "responsiveBehaviors": [
+        "<=640px single column",
+        "short-height scroll allowed"
+      ]
+    }
+  ],
+  "motion": [
+    {
+      "id": "source-highlight",
+      "durationMs": 360,
+      "purpose": "feedback",
+      "reducedMotion": "instant color-state switch"
+    }
+  ],
+  "constraints": [
+    "概念数据必须标为模拟",
+    "CTA 需产生可操作反馈",
+    "移动端禁止截断主要操作"
+  ],
+  "sourceTrace": [
+    "本地示例：依据架构原则设计，不代表用户产品",
+    "ASSUMPTION: 产品类型与受众均为演示用假设"
+  ],
+  "qualityPlan": {
+    "screenshots": [
+      {
+        "width": 320,
+        "height": 640
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "fiveSecondEvaluation": "heuristic-only unless blinded target-user participants are recruited; report cannot claim user comprehension from screenshots"
+  }
+}

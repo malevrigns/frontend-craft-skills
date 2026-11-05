@@ -1,0 +1,3 @@
+/* 新粗野主义：粗描边、硬投影、高对比 */
+[data-style="brutalist"] { --color-bg: #FFFDF5; --color-surface: #FFFFFF; --color-surface-2: #FFF1B8; --color-ink: #000; --color-line: #000; --color-accent: #FF5A1F; --color-accent-ink: #000; --radius-md: 0; --radius-lg: 0; --radius-xl: 0; --radius-pill: 0; --shadow-1: 3px 3px 0 #000; --shadow-2: 5px 5px 0 #000; --shadow-3: 8px 8px 0 #000; }
+[data-style="brutalist"] .ui-card, [data-style="brutalist"] .ui-btn, [data-style="brutalist"] .ui-input { border: 2px solid #000 !important; }

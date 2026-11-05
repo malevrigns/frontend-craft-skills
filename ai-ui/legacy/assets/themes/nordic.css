@@ -1,0 +1,2 @@
+/* 北欧极简：低饱和雾色、大留白、柔和圆角 */
+[data-style="nordic"] { --color-bg: #EEF0EE; --color-surface: #F9FAF9; --color-surface-2: #E3E7E4; --color-ink: #23302B; --color-ink-2: #56645E; --color-line: #D3DAD5; --color-accent: #4F7A67; --color-accent-soft: #D7E5DD; --radius-lg: 20px; --radius-xl: 28px; }

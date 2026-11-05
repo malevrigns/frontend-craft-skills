@@ -1,0 +1,2 @@
+/* 瑞士国际主义：网格、无衬线、黑白 + 单一红色、零圆角 */
+[data-style="swiss"] { --color-bg: #FFFFFF; --color-surface: #FFFFFF; --color-surface-2: #F2F2F2; --color-ink: #000000; --color-line: #000000; --color-accent: #E30613; --color-accent-soft: #FDE2E3; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-xl: 0; --shadow-1: none; --shadow-2: none; --shadow-3: none; --font-family-display: "Helvetica Neue", "PingFang SC", Arial, sans-serif; }

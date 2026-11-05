@@ -1,0 +1,14 @@
+/* Motion is purposeful. CSS transitions first; heavy layout transitions use Motion only when needed. */
+.craft-interactive {
+  transition: background-color var(--duration-quick) var(--ease-out),
+    color var(--duration-quick) var(--ease-out),
+    border-color var(--duration-quick) var(--ease-out),
+    transform var(--duration-quick) var(--ease-out);
+}
+.craft-interactive:active { transform: scale(.985); }
+.craft-interactive:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .craft-interactive { transition-duration: .01ms; }
+  .craft-interactive:active { transform: none; }
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}

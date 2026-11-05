@@ -1,0 +1,17 @@
+name: Frontend craft quality checks
+on:
+  push:
+  pull_request:
+jobs:
+  contract-and-css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/audit-css.mjs styles/
+      - run: node --check ai-ui/scripts/validate-spec.mjs
+      - run: node --check ai-ui/scripts/validate-first-impression.mjs
+      - run: node --check app/scripts/validate-interaction.mjs
+      - run: node scripts/test-v4.mjs

@@ -1,0 +1,57 @@
+{
+  "results": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "anchorInFirstView": true,
+      "ctaInFirstView": true,
+      "sourceStateUpdate": "passed",
+      "ctaFocus": "passed",
+      "testEngine": "Chromium local via page.set_content"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "anchorInFirstView": true,
+      "ctaInFirstView": true,
+      "sourceStateUpdate": "passed",
+      "ctaFocus": "passed",
+      "testEngine": "Chromium local via page.set_content"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "anchorInFirstView": true,
+      "ctaInFirstView": true,
+      "sourceStateUpdate": "passed",
+      "ctaFocus": "passed",
+      "testEngine": "Chromium local via page.set_content"
+    },
+    {
+      "width": 320,
+      "height": 640,
+      "overflow": false,
+      "anchorInFirstView": true,
+      "ctaInFirstView": true,
+      "sourceStateUpdate": "passed",
+      "ctaFocus": "passed",
+      "testEngine": "Chromium local via page.set_content"
+    },
+    {
+      "width": 390,
+      "height": 667,
+      "overflow": false,
+      "anchorInFirstView": true,
+      "ctaInFirstView": true,
+      "sourceStateUpdate": "passed",
+      "ctaFocus": "passed",
+      "testEngine": "Chromium local via page.set_content"
+    }
+  ],
+  "reducedMotion": "passed",
+  "jsDisabledContent": "passed",
+  "disclaimer": "not a user attention or conversion study"
+}

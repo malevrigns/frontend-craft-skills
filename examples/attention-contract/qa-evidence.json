@@ -1,0 +1,106 @@
+{
+  "claimedStatus": "BROWSER_VERIFIED",
+  "browserVerified": true,
+  "implementation": {
+    "stack": "standalone HTML/CSS/JavaScript (no external assets)",
+    "target": "TRACE concept demo, not production"
+  },
+  "screenshots": [
+    {
+      "width": 320,
+      "file": "preview-320x640.png"
+    },
+    {
+      "width": 390,
+      "file": "preview-390x844.png"
+    },
+    {
+      "width": 768,
+      "file": "preview-768x1024.png"
+    },
+    {
+      "width": 1440,
+      "file": "preview-1440x900.png"
+    }
+  ],
+  "testResults": [
+    {
+      "name": "no horizontal overflow at 5 viewports",
+      "status": "passed",
+      "environment": "Chromium local via page.set_content"
+    },
+    {
+      "name": "first-screen CTA / proof card visibility",
+      "status": "passed",
+      "environment": "5 viewports including short-height"
+    },
+    {
+      "name": "source selection and aria-pressed",
+      "status": "passed",
+      "environment": "Chromium DOM interaction"
+    },
+    {
+      "name": "CTA focus highlight",
+      "status": "passed",
+      "environment": "Chromium DOM interaction"
+    },
+    {
+      "name": "reduced motion and no-JS fallback",
+      "status": "passed",
+      "environment": "Chromium contexts"
+    }
+  ],
+  "reviewerType": "assistant-visual-inspection, not a target-user study",
+  "review": [
+    {
+      "dimension": "composition",
+      "score": 4,
+      "observation": "1440px 左侧价值陈述和右侧证据工作区构成清晰双焦点层次，其中证据链是主视觉；小面积金色引导视线。"
+    },
+    {
+      "dimension": "hierarchy",
+      "score": 4,
+      "observation": "浏览首屏能找到产品类别、核心价值和主 CTA；通过截图启发式判断，但尚无真实五秒盲测数据。"
+    },
+    {
+      "dimension": "responsiveness",
+      "score": 3,
+      "observation": "320px 标题与 CTA 均可见、工作区顶部进入首视，完整来源链需要滚动；320 与短高度仍有继续压缩的空间。"
+    },
+    {
+      "dimension": "craft",
+      "score": 3,
+      "observation": "实体表面/抑制光晕有明确层级，但仍是使用系统字体的概念样例，数据节点与背景细节尚未做真实客户评测。"
+    }
+  ],
+  "observedDefects": [
+    {
+      "viewport": "1440x900",
+      "observedDefect": "次要来源说明过小，观看时层次不够稳",
+      "fix": "调大来源标题与辅助说明字号",
+      "verified": "updated screenshot; no human reading test"
+    },
+    {
+      "viewport": "320x640",
+      "observedDefect": "工作区顶部进入首视较晚",
+      "fix": "降低小屏英雄区间距和辅助文本上边距，使工作区顶部从约 454px 提前到约 425px",
+      "verified": "Chromium bounding box comparison"
+    },
+    {
+      "viewport": "390x667",
+      "observedDefect": "短屏只能看到部分来源链；完整内容依赖纵向滚动",
+      "fix": "保留常规滚动且 CTA 可见",
+      "verified": "functional; potential design tradeoff not fully resolved"
+    }
+  ],
+  "blockers": [
+    "真实目标客户五秒盲测未进行",
+    "演示数据非真实研究",
+    "非生产环境、未经过实际移动设备或 Safari 测试"
+  ],
+  "userStudy": {
+    "performed": false,
+    "conversionMeasured": false
+  },
+  "notes": "BROWSER_VERIFIED 是浏览器渲染与交互验证，不表示审美通过、用户留存或转化率提升。"
+}

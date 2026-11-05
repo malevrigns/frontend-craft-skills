@@ -1,0 +1,2 @@
+/* 深色科技风 + 青色点缀（不用紫色渐变） */
+[data-style="dark-tech"] { --color-bg: #08090B; --color-surface: #111317; --color-surface-2: #181B21; --color-ink: #ECEDEE; --color-ink-2: #A1A7B0; --color-ink-3: #6B717A; --color-line: #23272F; --color-accent: #2DD4BF; --color-accent-ink: #04211D; --color-accent-soft: #0F2F2B; --shadow-2: 0 0 0 1px #23272F, 0 8px 24px -8px rgba(0,0,0,.6); --shadow-3: 0 0 0 1px #2A2F38, 0 24px 60px -20px rgba(0,0,0,.8); }

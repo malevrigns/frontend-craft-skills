@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>样例 · 记账 App 首页</title>
+<link rel="stylesheet" href="../assets/tokens.css"><link rel="stylesheet" href="../components/interactions.css">
+<style>
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #E6E5E0; font-family: var(--font-family-sans); color: var(--color-ink); }
+.phone { position: relative; width: 390px; height: 820px; border-radius: 44px; background: var(--color-bg); box-shadow: var(--shadow-3); overflow: hidden; display: flex; flex-direction: column; }
+.top { padding: 56px 20px 0; display: flex; justify-content: space-between; align-items: center; }
+.top small { color: var(--color-ink-3); } .icon-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--color-surface); box-shadow: var(--shadow-1); display: grid; place-items: center; color: var(--color-ink); cursor: pointer; } .icon-btn svg { width: 22px; }
+.hero { margin: 16px 20px 0; padding: 22px; border-radius: var(--radius-xl); background: var(--color-ink); color: var(--color-bg); position: relative; overflow: hidden; }
+.hero .bal { font: 400 var(--type-3xl)/1 var(--font-family-display); margin: 10px 0 18px; font-variant-numeric: tabular-nums; }
+.hero .row { display: flex; gap: 24px; font-size: var(--type-sm); opacity: .75; } .hero .row b { display: block; font-size: var(--type-md); opacity: 1; }
+.hero .ring { position: absolute; right: -30px; top: -30px; width: 160px; height: 160px; border-radius: 50%; border: 22px solid rgba(255,255,255,.06); }
+.quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 16px 20px 0; }
+.quick button { border: 0; background: var(--color-surface); border-radius: var(--radius-lg); padding: 12px 0 10px; display: grid; justify-items: center; gap: 6px; font: 500 var(--type-xs) var(--font-family-sans); color: var(--color-ink-2); cursor: pointer; box-shadow: var(--shadow-1); }
+.quick svg { width: 22px; color: var(--color-ink); }
+.tabs-wrap { margin: 18px 20px 10px; }
+.list { flex: 1; margin: 0 20px; } .list [data-ix="ptr"] { height: 100%; border-radius: var(--radius-xl) var(--radius-xl) 0 0; }
+.tx { display: flex; align-items: center; gap: 12px; } .tx .ic { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; color: #fff; flex: none; } .tx .ic svg { width: 20px; }
+.tx .m { flex: 1; } .tx .m small { color: var(--color-ink-3); font-size: var(--type-xs); } .tx .amt { font-weight: 600; font-variant-numeric: tabular-nums; } .ix-swipe .row > .tx { flex: 1; min-width: 0; }
+.ix-swipe { margin-bottom: 0; border-radius: 0; } .ix-swipe .row { padding: 12px 0; border-bottom: 1px solid var(--color-line); }
+.fab { position: absolute; right: 20px; bottom: 28px; z-index: 5; }
+.phone .ix-sheet { position: absolute; } .phone .ix-scrim { position: absolute; }
+</style></head><body>
+<div class="phone" id="phone">
+  <div class="top"><div><small>10 月 · 周五</small><div style="font-weight:600;font-size:18px">早上好，宏亮</div></div><button class="icon-btn" data-ix="press dot" aria-label="通知"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></button></div>
+  <div class="hero"><div class="ring"></div><small style="opacity:.6">本月结余</small><div class="bal">¥<span data-ix="countup" data-to="12480">0</span></div>
+    <div class="row"><div>收入<b>¥<span data-ix="countup" data-to="21300">0</span></b></div><div>支出<b>¥<span data-ix="countup" data-to="8820">0</span></b></div><div>预算剩余<b><span data-ix="countup" data-to="62">0</span>%</b></div></div></div>
+  <div class="quick">
+    <button data-ix="press sheet" data-target="#pay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M7 17L17 7M8.5 7H17v8.5"/></svg>转账</button>
+    <button data-ix="press toast" data-text="已生成收款码"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3.5" y="6" width="17" height="13" rx="2.5"/><path d="M3.5 9.5h17"/></svg>收款</button>
+    <button data-ix="press toast" data-text="账单已导出到邮箱"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 20V4M4 20h16"/><path d="M8 16l3.5-4 3 2.5L20 8"/></svg>报表</button>
+    <button data-ix="press toast" data-text="预算提醒已开启"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="4" y="5.5" width="16" height="14.5" rx="2"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg>预算</button></div>
+  <div class="tabs-wrap"><div data-ix="tabs"><button class="on">全部</button><button>支出</button><button>收入</button></div></div>
+  <div class="list"><div data-ix="ptr">
+    <div data-ix="swipe"><div class="tx"><span class="ic" style="background:#9A3412"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 9h12v5a5 5 0 0 1-5 5H10a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2 2 0 0 1 0 4H17"/></svg></span><div class="m"><b>Manner 咖啡</b><br><small>餐饮 · 09:12</small></div><span class="amt">-¥15</span></div></div>
+    <div data-ix="swipe"><div class="tx"><span class="ic" style="background:#334155"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="5" y="4" width="14" height="13" rx="3"/><path d="M8 20l2-3M16 20l-2-3M5 11h14"/></svg></span><div class="m"><b>地铁 2 号线</b><br><small>交通 · 08:40</small></div><span class="amt">-¥4</span></div></div>
+    <div data-ix="swipe"><div class="tx"><span class="ic" style="background:#0F766E"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><div class="m"><b>十月工资</b><br><small>收入 · 昨天</small></div><span class="amt" style="color:var(--color-success)">+¥21,300</span></div></div>
+    <div data-ix="swipe"><div class="tx"><span class="ic" style="background:#B45309"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M4 10.5L12 4l8 6.5V20H4z"/></svg></span><div class="m"><b>房租</b><br><small>居住 · 10 月 28 日</small></div><span class="amt">-¥3,200</span></div></div>
+  </div></div>
+  <div id="pay" hidden><h3 style="margin:0 0 4px">转账给 林夏</h3><p style="color:var(--color-ink-3);font-size:14px;margin:0 0 16px">招商银行 · 尾号 2048</p>
+    <div style="font:400 48px/1 var(--font-family-display);margin-bottom:20px">¥520.00</div><div data-ix="slide" data-label="向右滑动确认转账" style="width:100%"></div></div>
+</div>
+<script src="../components/interactions.js"></script>
+<script>
+// 弹层限制在手机框内
+document.getElementById('pay').addEventListener('click', () => {}, { once: true });
+const phone = document.getElementById('phone'), s = IX.sheet(document.getElementById('pay')), open = s.open;
+s.open = () => { open(); const sc = document.querySelector('.ix-scrim'); phone.append(sc, document.getElementById('pay')); };
+document.getElementById('pay').addEventListener('confirm', () => setTimeout(() => { s.close(); IX.toast('已转账 ¥520.00', { undo: () => {} }); }, 600));
+</script>
+</body></html>

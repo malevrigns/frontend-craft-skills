@@ -1,0 +1,43 @@
+/* Original token example; adapt to product context, do not blindly ship as a global theme. */
+:root {
+  color-scheme: light;
+  --canvas: oklch(96.8% 0.009 252);
+  --surface: oklch(99.5% 0.003 260);
+  --surface-subtle: oklch(97.8% 0.007 255);
+  --ink: oklch(24% 0.016 260);
+  --ink-muted: oklch(45% 0.014 260);
+  --edge: color-mix(in oklab, var(--ink) 11%, transparent);
+  --accent: oklch(60% 0.15 265);
+  --ring: oklch(61% 0.12 260);
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-pill: 999px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --shadow-contact: 0 1px 2px rgb(23 40 65 / 5%), 0 0 0 1px rgb(38 47 68 / 3%);
+  --shadow-floating: 0 18px 55px -22px rgb(23 40 65 / 18%), 0 4px 14px -8px rgb(23 40 65 / 11%);
+  --chrome-fill: rgb(255 255 255 / 68%);
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --duration-quick: 140ms;
+  --duration-standard: 240ms;
+  --ease-out: cubic-bezier(.2,.8,.2,1);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --canvas: oklch(17% 0.014 260);
+    --surface: oklch(22% 0.018 260);
+    --surface-subtle: oklch(26% 0.015 260);
+    --ink: oklch(96% 0.007 260);
+    --ink-muted: oklch(76% 0.01 260);
+    --edge: color-mix(in oklab, var(--ink) 14%, transparent);
+    --chrome-fill: rgb(30 35 46 / 72%);
+    --shadow-contact: 0 1px 2px rgb(0 0 0 / 30%), 0 0 0 1px rgb(255 255 255 / 3%);
+    --shadow-floating: 0 20px 50px -18px rgb(0 0 0 / 42%), 0 4px 12px -6px rgb(0 0 0 / 20%);
+  }
+}

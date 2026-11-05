@@ -1,0 +1,28 @@
+/* Role-based surfaces: avoid applying glass to every content card. */
+.craft-canvas {
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 75% 0%, color-mix(in oklab, var(--accent) 9%, transparent), transparent 58%),
+    var(--canvas);
+  min-height: 100dvh;
+  font-family: var(--font-ui);
+}
+.craft-surface {
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  box-shadow: var(--shadow-contact), 0 12px 30px -28px rgb(23 40 65 / 15%);
+  border-radius: var(--radius-lg);
+}
+.craft-chrome {
+  background: var(--chrome-fill);
+  border: 1px solid color-mix(in oklab, var(--ink) 9%, transparent);
+  box-shadow: inset 0 1px rgb(255 255 255 / 28%), var(--shadow-floating);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
+  border-radius: var(--radius-lg);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .craft-chrome { background: var(--surface); }
+}
+.craft-data-number { font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1; letter-spacing: -0.035em; }
+.craft-chart text { stroke: none; paint-order: normal; }

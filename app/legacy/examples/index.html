@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>App 与小程序高级交互库 · 组件画廊</title>
+<link rel="stylesheet" href="../assets/tokens.css"><link rel="stylesheet" href="../components/interactions.css">
+<style>
+body { margin: 0; background: var(--color-bg); font-family: var(--font-family-sans); color: var(--color-ink); }
+header { max-width: 1200px; margin: auto; padding: 56px 32px 8px; } header h1 { margin: 0 0 8px; font: 400 var(--type-3xl)/1.05 var(--font-family-display); } header p { margin: 0; color: var(--color-ink-2); }
+.cat { max-width: 1200px; margin: auto; padding: 40px 32px 0; } .cat > h2 { font: 600 var(--type-sm)/1 var(--font-family-mono); letter-spacing: .06em; color: var(--color-ink-3); margin: 0 0 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.demo { background: var(--color-surface-2); border-radius: var(--radius-xl); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-height: 180px; }
+.demo h3 { margin: 0; font-size: var(--type-sm); } .demo h3 small { font-weight: 400; color: var(--color-ink-3); margin-left: 6px; font-family: var(--font-family-mono); font-size: var(--type-xs); }
+.demo .stage { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.demo .stage.col { flex-direction: column; align-items: stretch; justify-content: flex-start; }
+.ava { width: 36px; height: 36px; border-radius: 50%; background: var(--color-accent-soft); flex: none; }
+.fbar { display: flex; gap: 6px; } .fbar button { border: 0; padding: 6px 12px; border-radius: var(--radius-pill); background: var(--color-surface); font-size: var(--type-xs); cursor: pointer; } .fbar button.on { background: var(--color-ink); color: var(--color-bg); }
+footer { max-width: 1200px; margin: auto; padding: 48px 32px 80px; color: var(--color-ink-3); font-size: var(--type-xs); }
+.chain-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: var(--color-surface); border-radius: var(--radius-md); margin-bottom: 6px; cursor: pointer; font-size: var(--type-sm); }
+</style></head><body>
+<header><h1>App 与小程序高级交互库</h1><p>47 个交互的可运行实现：43 个行为（data-ix）+ 4 种高级布局（CSS）。零依赖，打开即用。</p></header>
+
+<section class="cat"><h2>01 · 按钮与反馈</h2><div class="grid">
+  <div class="demo"><h3>按压回弹<small>press</small></h3><div class="stage"><button class="ix-btn" data-ix="press">按住我</button></div></div>
+  <div class="demo"><h3>物理按压<small>physical</small></h3><div class="stage"><button class="ix-btn ix-btn--light" data-ix="physical">内阴影 + 超调</button></div></div>
+  <div class="demo"><h3>水波按钮<small>ripple</small></h3><div class="stage"><button class="ix-btn ix-btn--accent" data-ix="press ripple">从点击点扩散</button></div></div>
+  <div class="demo"><h3>点击爆散<small>burst</small></h3><div class="stage"><button class="ix-btn" data-ix="press burst">点赞</button></div></div>
+  <div class="demo"><h3>成功勾选<small>success</small></h3><div class="stage"><div data-ix="success" style="cursor:pointer" title="点击重播"></div></div></div>
+  <div class="demo"><h3>一个按钮三种状态<small>tristate</small></h3><div class="stage"><button class="ix-btn" data-ix="tristate">提交订单</button></div></div>
+  <div class="demo"><h3>按钮变步进器<small>stepper</small></h3><div class="stage"><div data-ix="stepper"></div></div></div>
+  <div class="demo"><h3>按住蓄力确认<small>hold</small></h3><div class="stage"><button class="ix-btn" style="background:var(--color-danger)" data-ix="hold" data-hold="1200"><span class="t">长按删除</span></button></div></div>
+  <div class="demo"><h3>滑动确认<small>slide</small></h3><div class="stage"><div data-ix="slide"></div></div></div>
+  <div class="demo"><h3>图标变形<small>morph</small></h3><div class="stage"><button data-ix="morph"></button></div></div>
+  <div class="demo"><h3>弹性开关<small>switch</small></h3><div class="stage"><button data-ix="switch"></button><button data-ix="switch"></button></div></div>
+  <div class="demo"><h3>按钮一分为二<small>split</small></h3><div class="stage"><div data-ix="split"></div></div></div>
+</div></section>
+
+<section class="cat"><h2>02 · 数字与文字</h2><div class="grid">
+  <div class="demo"><h3>数字滚动<small>countup</small></h3><div class="stage" style="font:700 var(--type-2xl)/1 var(--font-family-sans)">¥<span data-ix="countup" data-to="128640">0</span></div></div>
+  <div class="demo"><h3>老虎机数字<small>slot / IX.slot()</small></h3><div class="stage" style="font:700 var(--type-2xl)/1 var(--font-family-sans)"><span id="slotA" data-ix="slot" data-value="42"></span><button class="ix-btn ix-btn--light" data-ix="press" onclick="IX.slot(document.getElementById('slotA'), Math.floor(Math.random()*999))">随机</button></div></div>
+  <div class="demo"><h3>角标滚动<small>badge</small></h3><div class="stage"><span id="bdg" data-ix="badge" data-value="8"></span><button class="ix-btn ix-btn--light" data-ix="press" onclick="const s=document.querySelector('#bdg > span');IX.slot(s,(+s.dataset.value||0)+7)">+7</button></div></div>
+  <div class="demo"><h3>标题逐行沉下再升起<small>titleswap</small></h3><div class="stage"><div data-ix="titleswap" data-titles="今日收支/一目了然|本周预算/还剩 62%|本月账单/已全部结清" style="cursor:pointer"></div></div></div>
+</div></section>
+
+<section class="cat"><h2>03 · 卡片与列表</h2><div class="grid">
+  <div class="demo"><h3>左滑删除<small>swipe</small></h3><div class="stage col">
+    <div data-ix="swipe"><span class="ava"></span><div><b>星巴克</b><br><small>-¥36.00 · 餐饮</small></div></div>
+    <div data-ix="swipe"><span class="ava"></span><div><b>地铁</b><br><small>-¥4.00 · 交通</small></div></div>
+    <div data-ix="swipe"><span class="ava"></span><div><b>工资</b><br><small>+¥18,000 · 收入</small></div></div></div></div>
+  <div class="demo"><h3>卡片翻面<small>flip</small></h3><div class="stage"><div data-ix="flip" data-faces="Prime 会员|核销码 8826 1043"></div></div></div>
+  <div class="demo"><h3>扇形展开<small>fan</small></h3><div class="stage" style="padding-top:20px"><div data-ix="fan"></div></div></div>
+  <div class="demo"><h3>列表展开详情<small>expand</small></h3><div class="stage col"><div data-ix="expand">订单 #2048<hr>已发货 · 顺丰 SF1029384756，预计明天 18:00 前送达。</div><div data-ix="expand">订单 #2047<hr>已签收 · 放在前台。</div></div></div>
+  <div class="demo"><h3>列表切网格（FLIP）<small>layout</small></h3><div class="stage col"><button class="ix-btn ix-btn--light" id="lt" data-ix="press">切换布局</button><div data-ix="layout" data-toggle="#lt"><div>A · 早餐</div><div>B · 午餐</div><div>C · 晚餐</div><div>D · 夜宵</div><div>E · 咖啡</div><div>F · 水果</div></div></div></div>
+  <div class="demo"><h3>筛选三曲线<small>filter</small></h3><div class="stage col"><div class="fbar" id="fb"><button class="on" data-k="all">全部</button><button data-k="a">餐饮</button><button data-k="b">交通</button></div>
+    <div data-ix="filter" data-bar="#fb"><div data-k="a" style="background:#9A3412">餐</div><div data-k="b" style="background:#0F766E">交</div><div data-k="a" style="background:#B45309">饮</div><div data-k="b" style="background:#334155">车</div><div data-k="a" style="background:#7C2D12">茶</div><div data-k="b" style="background:#115E59">铁</div></div></div></div>
+  <div class="demo"><h3>入场错峰<small>stagger · 双击重播</small></h3><div class="stage col"><div data-ix="stagger" style="display:grid;gap:8px"><div class="ix-skel" style="height:28px;animation:none"></div><div style="height:28px;border-radius:8px;background:var(--color-surface)"></div><div style="height:28px;border-radius:8px;background:var(--color-surface)"></div><div class="ix-btn" style="height:40px">按钮最后出现</div></div></div></div>
+  <div class="demo"><h3>骨架屏<small>skeleton · 双击重载</small></h3><div class="stage col"><div data-ix="skeleton"><div style="height:120px;border-radius:8px;background:var(--color-accent);margin-bottom:10px"></div><b>秋季新品上架</b><p style="margin:4px 0 0;font-size:14px;color:var(--color-ink-2)">骨架和内容同尺寸，不跳动</p></div></div></div>
+  <div class="demo"><h3>券卡厚度 + 高光视差<small>coupon</small></h3><div class="stage"><div data-ix="coupon"><b style="font-size:24px">¥50</b><br><small>满 299 可用 · 移动鼠标</small></div></div></div>
+</div></section>
+
+<section class="cat"><h2>04 · 手势与控件</h2><div class="grid">
+  <div class="demo"><h3>下拉刷新<small>ptr</small></h3><div class="stage col"><div data-ix="ptr"><div class="item">10:24 · 收到转账 ¥200</div><div class="item">09:10 · 早餐 -¥18</div><div class="item">昨天 · 房租 -¥3,200</div><div class="item">昨天 · 理财收益 +¥12.40</div></div></div></div>
+  <div class="demo"><h3>前后对比滑块<small>compare</small></h3><div class="stage"><div data-ix="compare"><div style="background:#8C8C88">修图前</div><div class="after" style="background:#0F766E">修图后</div></div></div></div>
+  <div class="demo"><h3>刻度尺调节<small>ruler</small></h3><div class="stage col" style="align-items:center"><div data-ix="ruler" data-min="0" data-max="100" data-value="60" data-unit="%" id="rul"></div><div id="rulimg" style="width:300px;height:40px;border-radius:12px;background:var(--color-accent)"></div></div></div>
+  <div class="demo"><h3>弧形快捷菜单<small>arc · 长按或点击</small></h3><div class="stage" style="padding-top:60px;justify-content:flex-end"><div data-ix="arc"></div></div></div>
+</div></section>
+
+<section class="cat"><h2>05 · 弹窗与面板</h2><div class="grid">
+  <div class="demo"><h3>半屏弹层<small>sheet · 下拖 1/3 或甩动关闭</small></h3><div class="stage"><button class="ix-btn" data-ix="press sheet" data-target="#sheet1">打开弹层</button></div></div>
+  <div class="demo"><h3>从按钮长出来<small>pop</small></h3><div class="stage"><button class="ix-btn ix-btn--light" data-ix="press pop" data-target="#pop1">更多操作</button></div></div>
+  <div class="demo"><h3>搜索框展开<small>search</small></h3><div class="stage" style="justify-content:flex-start"><div data-ix="search"></div></div></div>
+  <div class="demo"><h3>玻璃面板浮起<small>glass · 点击切换</small></h3><div class="stage col"><div data-ix="glass"></div></div></div>
+</div></section>
+
+<section class="cat"><h2>06 · 提示与通知</h2><div class="grid">
+  <div class="demo"><h3>提示排队<small>toast</small></h3><div class="stage"><button class="ix-btn" data-ix="press toast" data-text="已加入收藏">连点几次</button></div></div>
+  <div class="demo"><h3>撤销条（可见倒计时）<small>toast data-undo</small></h3><div class="stage"><button class="ix-btn ix-btn--light" data-ix="press toast" data-undo data-text="已归档 3 封邮件">归档</button></div></div>
+  <div class="demo"><h3>顶部横幅推开页面<small>banner</small></h3><div class="stage col"><div data-ix="banner" style="height:180px;cursor:pointer"><div class="ix-banner">网络已恢复，数据已同步</div><div class="page"><b>点击区域模拟收到通知</b><p style="color:var(--color-ink-2);font-size:14px">横幅下落时整页内容一起下移让位。</p></div></div></div></div>
+  <div class="demo"><h3>红点消散<small>dot</small></h3><div class="stage"><button class="ix-btn ix-btn--light" data-ix="dot">消息</button></div></div>
+  <div class="demo"><h3>红点连锁<small>chain</small></h3><div class="stage col"><div data-ix="chain">
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px;font-size:14px"><b>Tab · 消息</b><span class="ix-badge" data-tab-badge><span></span></span><b style="margin-left:12px">分组 · 账单</b><span class="ix-badge" data-group-badge><span></span></span></div>
+    <div class="chain-row" data-unread="2">信用卡账单<span class="ix-badge">2</span></div><div class="chain-row" data-unread="1">水电费<span class="ix-badge">1</span></div><div class="chain-row" data-unread="3">订阅续费<span class="ix-badge">3</span></div></div></div></div>
+</div></section>
+
+<section class="cat"><h2>07 · 转场与滚动</h2><div class="grid">
+  <div class="demo"><h3>共享元素放大（FLIP）<small>shared</small></h3><div class="stage col"><div class="ix-shared-grid" data-ix="shared"><div style="background:#0F766E"></div><div style="background:#9A3412"></div><div style="background:#334155"></div><div style="background:#B45309"></div><div style="background:#111"></div><div style="background:#115E59"></div></div></div></div>
+  <div class="demo"><h3>大标题折叠（sticky header）<small>largetitle</small></h3><div class="stage col"><div data-ix="largetitle" style="height:260px"><header><span class="small">账单</span></header><h2>账单</h2><div class="rows"><div>10 月 · ¥8,420</div><div>9 月 · ¥7,960</div><div>8 月 · ¥9,100</div><div>7 月 · ¥6,880</div><div>6 月 · ¥7,240</div><div>5 月 · ¥8,010</div><div>4 月 · ¥6,500</div></div></div></div></div>
+  <div class="demo"><h3>弹性 Tab 指示条<small>tabs</small></h3><div class="stage col"><div data-ix="tabs"><button class="on">支出</button><button>收入</button><button>转账</button><button>理财</button></div></div></div>
+  <div class="demo"><h3>分类联动滚动<small>category</small></h3><div class="stage col"><div data-ix="category" style="height:260px"><nav><button class="on">热销</button><button>咖啡</button><button>茶饮</button><button>轻食</button></nav><div class="list">
+    <h4>热销</h4><p>生椰拿铁</p><p>美式</p><p>燕麦拿铁</p><h4>咖啡</h4><p>澳白</p><p>手冲</p><p>冷萃</p><h4>茶饮</h4><p>柠檬茶</p><p>乌龙</p><p>抹茶</p><h4>轻食</h4><p>可颂</p><p>贝果</p><p>沙拉</p><p>三明治</p></div></div></div></div>
+  <div class="demo"><h3>抛物线飞入购物车<small>fly</small></h3><div class="stage" style="justify-content:space-between"><button class="ix-btn" data-ix="press fly" data-to="#cart">加入购物车</button><div id="cart" style="display:flex;gap:6px;align-items:center;padding:10px 14px;border-radius:999px;background:var(--color-surface)">购物车 <b class="ix-slot" data-value="0">0</b></div></div></div>
+  <div class="demo"><h3>页面推入（旧页缩小压暗）<small>push</small></h3><div class="stage col"><div data-ix="push" style="height:200px"><section class="prev"><b>钱包</b><p style="font-size:14px;color:var(--color-ink-2)">余额 ¥12,480</p><button class="ix-btn" data-go>查看明细</button></section><section class="next"><b>明细</b><p style="font-size:14px;color:var(--color-ink-2)">旧页在背后缩到 0.94 并压暗。</p><button class="ix-btn ix-btn--light" data-back>返回</button></section></div></div></div>
+</div></section>
+
+<section class="cat"><h2>08 · 高级布局（CSS 类）</h2><div class="grid">
+  <div class="demo"><h3>非对称 7:3<small>.ix-asym</small></h3><div class="stage col"><div class="ix-asym"><div style="height:120px;border-radius:16px;background:var(--color-ink)"></div><div style="height:120px;border-radius:16px;background:var(--color-accent-soft)"></div></div></div></div>
+  <div class="demo"><h3>错位卡片<small>.ix-offset</small></h3><div class="stage col"><div class="ix-offset" style="padding-bottom:32px"><div style="height:90px;border-radius:12px;background:#0F766E"></div><div style="height:90px;border-radius:12px;background:#9A3412"></div><div style="height:90px;border-radius:12px;background:#334155"></div></div></div></div>
+  <div class="demo"><h3>层叠遮挡<small>.ix-layer</small></h3><div class="stage col"><div class="ix-layer"><div class="img" style="background:#0F766E"></div><span class="tag">新品</span><div class="card"><b>山茶系列</b><p style="margin:4px 0 0;font-size:12px;color:var(--color-ink-2)">卡片压图片，标签压卡片</p></div></div></div></div>
+  <div class="demo"><h3>大色块 Bento<small>.ix-blocks</small></h3><div class="stage col"><div class="ix-blocks"><div style="grid-column:span 2;grid-row:span 2;background:#111">主</div><div style="background:#0F766E">次</div><div style="background:#9A3412">次</div><div style="grid-column:span 2;background:#334155">辅</div></div></div></div>
+</div></section>
+
+<div id="sheet1" hidden><h3 style="margin:0 0 8px">选择支付方式</h3><p style="color:var(--color-ink-2);font-size:14px;margin:0 0 16px">下拖超过 1/3 或快速甩动即可关闭。</p><div data-ix="slide" data-label="向右滑动确认支付 ¥128"></div><p></p><button class="ix-btn ix-btn--light" data-close style="width:100%">取消</button></div>
+<div id="pop1" hidden><button>分享</button><button>收藏</button><button>举报</button></div>
+<footer>完整清单：IX.list · 用法见 components/README 与 SKILL.md</footer>
+<script src="../components/interactions.js"></script>
+<script>document.getElementById('rul').addEventListener('input', e => document.getElementById('rulimg').style.filter = `brightness(${0.4 + e.detail / 100})`);</script>
+</body></html>

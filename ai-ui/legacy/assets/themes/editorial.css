@@ -1,0 +1,2 @@
+/* 杂志编辑风：米白纸感 + 衬线大标题 + 墨黑 + 砖红点缀 */
+[data-style="editorial"] { --color-bg: #F4F1EA; --color-surface: #FBFAF6; --color-surface-2: #ECE7DC; --color-ink: #1A1814; --color-ink-2: #4E4A42; --color-line: #D9D2C3; --color-accent: #B4381F; --color-accent-soft: #F1D9D1; --radius-md: 4px; --radius-lg: 6px; --radius-xl: 8px; --font-family-display: "Instrument Serif", "Songti SC", "Noto Serif SC", Georgia, serif; }

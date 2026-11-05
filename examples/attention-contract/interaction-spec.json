@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "4.0",
+  "product": "TRACE",
+  "platforms": [
+    "web"
+  ],
+  "firstActionJourney": {
+    "componentId": "hero-cta",
+    "discover": "首屏唯一金色高对比 CTA",
+    "understand": "试着打开来源证明演示",
+    "trigger": "click/Enter on hero-cta",
+    "feedback": "页面移动至证据链并设置可见强调状态",
+    "outcome": "source-trail-demo-open",
+    "recovery": "用户可以退出演示或切换来源",
+    "simulation": true
+  },
+  "interactions": [
+    {
+      "id": "open-source-trail",
+      "componentId": "hero-cta",
+      "trigger": "click, Enter or Space",
+      "guard": "skip repeat while target already active",
+      "stateBefore": "demo.focused=false",
+      "stateAfter": "demo.focused=true",
+      "feedback": "focused evidence panel with visible status",
+      "durationMs": 300,
+      "failure": "JS unavailable or section missing",
+      "recovery": "native href=#trail-demo works as fallback",
+      "keyboard": "Enter activates native anchor and target has tabindex=-1",
+      "touch": "minimum 44px height",
+      "a11y": "visible focus ring and explicit demo label",
+      "reducedMotion": "jump to section without animated scroll",
+      "testCases": [
+        "CTA moves to evidence workspace",
+        "JS disabled native anchor still works"
+      ]
+    },
+    {
+      "id": "choose-source",
+      "componentId": "source-node-1",
+      "trigger": "click or Enter on source button",
+      "guard": "same active source does not reanimate",
+      "stateBefore": "source=initial",
+      "stateAfter": "source=selected",
+      "feedback": "source details and proof path highlight",
+      "durationMs": 360,
+      "failure": "no external source available (demo data only)",
+      "recovery": "switch source or reset selection",
+      "keyboard": "button supports Enter and Space",
+      "touch": "large touch target",
+      "a11y": "aria-pressed updates on active source",
+      "reducedMotion": "instant selection",
+      "testCases": [
+        "source selection is visible",
+        "aria-pressed changes"
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "targetComponentId": "source-trail",
+      "trigger": "initial render",
+      "purpose": "orientation",
+      "startMs": 0,
+      "durationMs": 360,
+      "reducedMotion": "instant state, no translate"
+    },
+    {
+      "targetComponentId": "hero-cta",
+      "trigger": "activation",
+      "purpose": "feedback",
+      "startMs": 0,
+      "durationMs": 300,
+      "reducedMotion": "instant focus change"
+    }
+  ]
+}
