@@ -17,3 +17,5 @@
 
 ## 设计 / 交互参考
 - https://nelson.co/work/linear-interaction-moments — Linear 微交互案例（参考，未产出）
+
+- https://github.com/heydamir/unslop | 去AI味流程库 | QA收尾九层复检（用户2026-11-06认可）
