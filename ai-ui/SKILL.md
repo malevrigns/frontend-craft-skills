@@ -47,6 +47,15 @@ description: >-
 
 例外：用户明确要求「纯教学手写 CSS」或只有像素级还原且无可用源时，可局部手写，但须在规格中标注 `HANDWRITTEN_EXCEPTION` 与理由。
 
+## 硬规则：认可资源库（可迭代）
+**用户觉得好看、表示认可时，把对应组件库 / 设计库 / 动效库 / 模板的 URL 记入 `docs/APPROVED_RESOURCES.md`（只存 URL + 类型 + 一句备注，不拷代码）。**
+
+### 调用流程
+1. **先搜资源**：每次实现前，先查 `APPROVED_RESOURCES.md` 与外部来源，列出可复用资源。
+2. **多选先问**：同类有 ≥2 个候选资源时，先给用户候选（名称 + URL + 一句差异），**等用户选定再执行**；不要替用户默认决定。
+3. **单个直用**：只有一个已认可资源时可直接复用，并在交付复用清单中写明 URL。
+4. **迭代更新**：用户推翻旧偏好时，把旧条目标记 `(deprecated)` 并补新选择。
+
 ## 校验
 `node ai-ui/scripts/validate-spec.mjs`；`validate-first-impression.mjs`；`verify-evidence.mjs`。自动校验≠审美通过。
 
